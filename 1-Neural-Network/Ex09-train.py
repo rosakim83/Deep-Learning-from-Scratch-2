@@ -1,12 +1,10 @@
-# coding: utf-8
 import sys
-sys.path.append('..')  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
 import numpy as np
+import matplotlib.pyplot as plt
 from common.optimizer import SGD
 from dataset import spiral
-import matplotlib.pyplot as plt
-from two_layer_net import TwoLayerNet
-
+from Ex08 import TwoLayerNet
+sys.path.append('..')
 
 # 하이퍼파라미터 설정
 max_epoch = 300
@@ -47,16 +45,14 @@ for epoch in range(max_epoch):
         # 정기적으로 학습 경과 출력
         if (iters+1) % 10 == 0:
             avg_loss = total_loss / loss_count
-            print('| 에폭 %d |  반복 %d / %d | 손실 %.2f'
-                  % (epoch + 1, iters + 1, max_iters, avg_loss))
+            print('| 에폭 %d |  반복 %d / %d | 손실 %.2f' % (epoch + 1, iters + 1, max_iters, avg_loss))
             loss_list.append(avg_loss)
             total_loss, loss_count = 0, 0
 
-
 # 학습 결과 플롯
 plt.plot(np.arange(len(loss_list)), loss_list, label='train')
-plt.xlabel('반복 (x10)')
-plt.ylabel('손실')
+plt.xlabel('iters (x10)')
+plt.ylabel('loss')
 plt.show()
 
 # 경계 영역 플롯
