@@ -19,5 +19,5 @@ def preprocess(text):
     return corpus, word_to_id, id_to_word
 
 
-text = 'You say goodby and I say hello.'
+text = 'You say goodbye and I say hello.'
 corpus, word_to_id, id_to_word = preprocess(text)
